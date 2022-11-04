@@ -1,0 +1,9 @@
+Hello World
+<form name='test' method='POST'>{% csrf_token %}<input name='tst_txt' type='text'><input type='submit'>
+Start: <input name='start_time' type='text'>
+End: <input name='end_time' type='text'>
+Events: <input name='event' type='text'>
+</form>
+
+This is the cntxt: {{cntxt}}
+This is the csrf_token: {{csrf_token}}
