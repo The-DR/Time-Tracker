@@ -32,8 +32,8 @@ Requirement: This is a Django App and requires a Django project with a login sys
   - Allow for multiple Sub-Tasks per Task / Sub-Task
   - Projects, Sub-Projects, Tasks & Sub-Tasks:
     - Share a common table
-    - This table will have a `Parent_id` field pointing back into itself
+    - This table will have a `Parent id` field pointing back into itself
   - Consider the potential for future sharing of Projects between Clients
 - ### Time Log Entries
   - Entries must be allocated to a Project, Sub-Project, Task or Sub-Task
-  - Entries track: `User id` `Parent id` `Start Time` `End Time` `Productivity Level`
+  - Entries track: `User id` `Parent id` `Start dt` `End dt` `Productivity Level`
