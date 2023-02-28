@@ -3,26 +3,37 @@
 Requirement: This is a Django App and requires a Django project with a login system configured.
 - ### Users
   - Users are individuals who are tracking thier time
-  - User Details: `E-Mail, Name, Nick Name, Address, Phone #`
-  - Allow for multiple Users
-  - Users maybe allocated to multiple projects
-  - Users can access reports on themselves
+  - Those who are opperating this app should be the first User(s)
+  - User Details: `Name` `Nick Name` `E-Mail` `Address` `Phone #`
+  - Users can create Clients
+    -  A User who creates a Client will be that Client's Manager by default
+  - Users maybe allocated to multiple Projects, Sub-Projects, Tasks & Sub-Tasks, for any Client by that Client's Manager
+  - Users can access reports on themselves and thier Clients
   - #### Managers
-    - Managers are users who can produce client, project & user reports
-    - A manager must be assigned to each client
-    - Managers 
+    - Managers are Users who have one or more Clients
+    - Each Client must have atleast one Manager, but may have many
+    - The User who creates a Client is automaticly it's Manager
+    - Managers can add/remove other Users as Managers for thier Clients, but not themselves
+    - Managers can add/edit/archive/activate Projects, Sub-Projects, Tasks & Sub-Tasks for thier Clients
+    - Managers can archive & activate thier Clients
+    - Managers can produce Client, Project & User focused reports for thier Clients
+    - Managers can allocate Users to the Projects, Sub-Projects, Tasks & Sub-Tasks of thier Clients
+      - Allocation makes the specified Project, Sub-Project, Task or Sub-Task available to the User for logging time
 - ### Clients
-  - Clients are organizations who have projects/tasks being tracked by the users
-  - The organization which is operating this app should be the first client
-  - Client Details: `Organization Name, Organization Address, Organization Phone #, Contact Name, Contact Phone #`
+  - Organizations, groups or individuals who have Projects being tracked by Users
+  - Those who are opperating this app should be the first Client
+  - Client Details: `Client Name` `Client Address` `Client Phone #` `Contact Name` `Contact Phone #`
   - Allow for multiple Clients
-  - Clients control Time Log granularity/hour
 - ### Projects, Sub-Projects, Tasks & Sub-Tasks
   - Allow for multiple Projects per Client
-  - Allow for the potential sharing of Projects between Clients
+    - Projects have a parent_fk = 0
   - Allow for multiple Sub-Projects per Project
   - Allow for multiple Tasks per Project / Sub-Project
   - Allow for multiple Sub-Tasks per Task / Sub-Task
+  - Projects, Sub-Projects, Tasks & Sub-Tasks:
+    - Share a common table
+    - This table will have a `Parent_id` field pointing back into itself
+  - Consider the potential for future sharing of Projects between Clients
 - ### Time Log Entries
   - Entries must be allocated to a Project, Sub-Project, Task or Sub-Task
-  - Entries track: `User, Start Time, End Time, Project, Sub-Project, Task, Sub-Task, Productivity Level`
+  - Entries track: `User id` `Parent id` `Start Time` `End Time` `Productivity Level`
